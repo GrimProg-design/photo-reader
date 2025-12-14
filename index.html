@@ -4,13 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>photo-reader</title>
+    <link rel="stylesheet" href="src/style/main.css" />
   </head>
   <body>
     <div id="app">
-      <input type="file" id="file" />
-      <pre id="out"></pre>
+      <div class="icons-con">
+        <p>Выберете способ загрузки файлов</p>
+        <div>
+          <img
+          src="src/images/camera.svg"
+          alt="Изображение камеры"
+          class="icons cam-i"
+        />
+        <img
+          src="src/images/upload.png"
+          alt="Изображение выгрузки файлов"
+          class="icons upload-i"
+        />
+        </div>
+      </div>
 
-      <div class="camera">
+      <div class="upload-file hidden">
+        <input type="file" id="file" />
+        <pre id="out"></pre>
+      </div>
+
+      <div class="camera hidden">
         <video id="video" autoplay playsinline width="400"></video>
         <button id="snap">Сделать фото</button>
         <canvas
