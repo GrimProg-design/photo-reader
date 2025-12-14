@@ -3,41 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>photo-reader</title>
+    <title>Photo-Reader</title>
     <link rel="stylesheet" href="src/style/main.css" />
   </head>
   <body>
     <div id="app">
       <div class="icons-con">
-        <p>Выберете способ загрузки файлов</p>
-        <div>
-          <img
-          src="src/images/camera.svg"
-          alt="Изображение камеры"
-          class="icons cam-i"
-        />
-        <img
-          src="src/images/upload.png"
-          alt="Изображение выгрузки файлов"
-          class="icons upload-i"
-        />
+        <p class="instruction-text">Выберите способ загрузки файла:</p>
+        <div class="choice-buttons">
+          <button class="icon-button cam-i">
+            <img
+              src="src/images/camera.svg"
+              alt="Изображение камеры"
+              class="icons"
+            />
+          </button>
+          <button class="icon-button upload-i">
+            <img
+              src="src/images/upload.png"
+              alt="Изображение выгрузки файлов"
+              class="icons"
+            />
+          </button>
         </div>
       </div>
 
-      <div class="upload-file hidden">
-        <input type="file" id="file" />
+      <div class="upload-file box-content hidden">
+        <input type="file" id="file" class="custom-file-input" />
+        <label for="file" class="btn btn-white btn-animate">
+          Выбрать файл
+        </label>
         <pre id="out"></pre>
       </div>
 
-      <div class="camera hidden">
-        <video id="video" autoplay playsinline width="400"></video>
-        <button id="snap">Сделать фото</button>
-        <canvas
-          id="canvas"
-          width="400"
-          height="300"
-          style="display: none"
-        ></canvas>
+      <div class="camera box-content hidden">
+        <video id="video" autoplay playsinline></video>
+        <button id="snap" class="btn btn-primary">Сделать фото</button>
+        <canvas id="canvas"></canvas>
         <pre id="out_for_camera"></pre>
       </div>
     </div>
