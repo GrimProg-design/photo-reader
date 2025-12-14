@@ -30,7 +30,22 @@ export class Camera {
   click() {
     this.snap.addEventListener("click", async () => {
       const ctx = this.canvas.getContext("2d")!;
+      
+      const max_width = 1000;
+      const scale = Math.min(max_width / this.video.videoWidth, 1);
+      this.canvas.width = this.video.videoWidth * scale;
+      this.canvas.height = this.video.videoHeight * scale;
       ctx.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
+
+      const imageData = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+      const data = imageData.data;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        const bw = avg > 128 ? 255 : 0;
+        data[i] = data[i + 1] = data[i + 2] = bw;
+      }
+      ctx.putImageData(imageData, 0, 0);
 
       this.canvas.toBlob(async (blob) => {
         if (!blob) return;
