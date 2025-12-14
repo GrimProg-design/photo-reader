@@ -164,10 +164,6 @@ class App {
       this.upload_i.classList.add("active-choice");
       this.camera_i.classList.remove("active-choice");
     });
-
-    this.cameraInstance.onTextRecognized = (text: string) => {
-      console.log("Текст распознан и готов к копированию.");
-    };
   }
 }
 
