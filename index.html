@@ -3,22 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Photo-Reader</title>
+    <title>Photo-Reader | OCR Tool</title>
     <link rel="stylesheet" href="src/style/main.css" />
   </head>
   <body>
     <div id="app">
+      <div class="welcome-box box-content">
+        <h2>Photo-Reader: Ваш лаконичный OCR-инструмент</h2>
+        <p>
+          Этот сервис позволяет вам распознавать текст на изображениях,
+          используя локальные файлы или встроенную камеру вашего устройства.
+        </p>
+        <ol class="instruction-list">
+          <li>
+            Выберите способ: Нажмите на иконку камеры (для фото) или
+            загрузки (для файла).
+          </li>
+          <li>
+            Сделайте снимок/Загрузите файл: Предоставьте изображение,
+            содержащее текст.
+          </li>
+          <li>Получите результат: Распознанный текст появится ниже.</li>
+        </ol>
+      </div>
+
       <div class="icons-con">
         <p class="instruction-text">Выберите способ загрузки файла:</p>
         <div class="choice-buttons">
-          <button class="icon-button cam-i">
+          <button class="icon-button cam-i" title="Использовать камеру">
             <img
               src="src/images/camera.svg"
               alt="Изображение камеры"
               class="icons"
             />
           </button>
-          <button class="icon-button upload-i">
+          <button class="icon-button upload-i" title="Загрузить локальный файл">
             <img
               src="src/images/upload.png"
               alt="Изображение выгрузки файлов"
