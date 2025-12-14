@@ -6,11 +6,11 @@ export class Camera {
   snap: HTMLButtonElement;
   out_camera: HTMLElement;
 
-  constructor(out: HTMLElement) {
+  constructor(out_camera: HTMLElement) { 
     this.video = document.getElementById("video") as HTMLVideoElement;
     this.canvas = document.getElementById("canvas") as HTMLCanvasElement;
     this.snap = document.getElementById("snap") as HTMLButtonElement;
-    this.out_camera = out;
+    this.out_camera = out_camera;
 
     this.startCamera();
     this.click();
@@ -23,7 +23,13 @@ export class Camera {
       });
       this.video.srcObject = stream;
     } catch (err) {
-      console.error("Ошибка доступа к камере", err);
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        this.video.srcObject = stream;
+      } catch (e) {
+        console.error("Ошибка доступа к камере", e);
+        this.out_camera.textContent = "Ошибка: Не удалось получить доступ к камере.";
+      }
     }
   }
 
@@ -48,7 +54,10 @@ export class Camera {
       ctx.putImageData(imageData, 0, 0);
 
       this.canvas.toBlob(async (blob) => {
-        if (!blob) return;
+        if (!blob) {
+          this.out_camera.textContent = "Ошибка при создании изображения.";
+          return;
+        }
         this.out_camera.textContent = "Распознаём фото...";
         const text = await OCRWorker.recognize(blob);
         this.out_camera.textContent = text;
