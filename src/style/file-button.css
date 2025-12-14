@@ -54,6 +54,18 @@
   animation-fill-mode: backwards;
 }
 
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    margin-top: 15px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
 @keyframes moveInBottom {
   0% {
     opacity: 0;

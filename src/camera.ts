@@ -5,6 +5,7 @@ export class Camera {
   canvas: HTMLCanvasElement;
   snap: HTMLButtonElement;
   out_camera: HTMLElement;
+  onTextRecognized: (text: string) => void = () => {};
 
   constructor(out_camera: HTMLElement) { 
     this.video = document.getElementById("video") as HTMLVideoElement;
@@ -23,12 +24,13 @@ export class Camera {
       });
       this.video.srcObject = stream;
     } catch (err) {
+      console.warn("Задняя камера не найдена или недоступна. Попытка использовать любую камеру.", err);
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         this.video.srcObject = stream;
       } catch (e) {
         console.error("Ошибка доступа к камере", e);
-        this.out_camera.textContent = "Ошибка: Не удалось получить доступ к камере.";
+        this.out_camera.textContent = "Ошибка: Не удалось получить доступ к камере. Проверьте разрешения.";
       }
     }
   }
@@ -59,8 +61,12 @@ export class Camera {
           return;
         }
         this.out_camera.textContent = "Распознаём фото...";
+        
         const text = await OCRWorker.recognize(blob);
         this.out_camera.textContent = text;
+        
+        this.onTextRecognized(text); 
+        
       }, "image/jpeg");
     });
   }
