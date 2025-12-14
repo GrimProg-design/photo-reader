@@ -18,7 +18,9 @@ export class Camera {
 
   async startCamera() {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { exact: "environment" } },
+      });
       this.video.srcObject = stream;
     } catch (err) {
       console.error("Ошибка доступа к камере", err);
