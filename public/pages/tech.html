@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo-Reader | О технологии OCR</title>
+    <link rel="stylesheet" href="../src/style/main.css" />
+    <meta
+      name="description"
+      content="Информация о том, как работает OCR в Photo-Reader и какие технологии используются."
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-content">
+        <a href="/" class="logo-link">Photo-Reader</a>
+        <nav class="main-nav">
+          <a href="/" class="nav-link">Главная</a>
+
+          <a href="/pages/tech.html" class="nav-link">О технологии OCR</a>
+          <a href="/pages/about.html" class="nav-link">О нас</a>
+          <a href="/pages/privacy-policy.html" class="nav-link">Политика</a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="app">
+      <div class="box-content wide-content" style="text-align: left">
+        <h2>Как работает OCR в Photo-Reader</h2>
+        <p>
+          Photo-Reader использует библиотеку Tesseract.js, чтобы выполнять
+          распознавание текста прямо в браузере пользователя. Это позволяет
+          избежать передачи изображений на сервер и повышает уровень
+          конфиденциальности.
+        </p>
+
+        <h3>Ключевые особенности:</h3>
+        <ul class="instruction-list">
+          <li>
+            Обработка на стороне клиента — изображения не покидают браузер.
+          </li>
+          <li>Поддержка форматов JPG/PNG и большинства типов шрифтов.</li>
+          <li>Быстрый старт без регистрации.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="notification-toast" class="toast"></div>
+
+    <footer class="site-footer">
+      <p>© 2025 Photo-Reader by Grim Porg.</p>
+    </footer>
+  </body>
+</html>
