@@ -17,12 +17,12 @@
 
     <meta
       name="description"
-      content="Бесплатный онлайн OCR-инструмент Photo-Reader. Мгновенное распознавание текста с загруженных изображений и прямо с камеры вашего телефона. Быстро, просто и минималистично."
+      content="Бесплатный онлайн OCR-инструмент Photo-Reader. Мгновенное распознавание текста с загруженных изображений. Быстро, просто и минималистично."
     />
 
     <meta
       name="keywords"
-      content="OCR, распознавание текста, фото в текст, онлайн OCR, Image to Text, Photo-Reader, бесплатный OCR, OCR с камеры, минималистичный дизайн"
+      content="OCR, распознавание текста, фото в текст, онлайн OCR, Image to Text, Photo-Reader, бесплатный OCR, минималистичный дизайн"
     />
 
     <meta name="author" content="Grim Porg / Photo-Reader" />
@@ -31,7 +31,7 @@
 
     <meta
       property="og:title"
-      content="Photo-Reader | Бесплатный OCR-инструмент с камеры и файла"
+      content="Photo-Reader | Бесплатный OCR-инструмент из файла"
     />
     <meta
       property="og:description"
@@ -53,72 +53,58 @@
         "name": "Photo-Reader OCR Tool",
         "applicationCategory": "ProductivityApplication",
         "operatingSystem": "All",
-        "description": "Онлайн-инструмент для распознавания текста (OCR) с изображений и прямо с камеры телефона.",
+        "description": "Онлайн-инструмент для распознавания текста (OCR) с изображений.",
         "url": "https://photo-reader.vercel.app//"
       }
     </script>
   </head>
   <body>
+    <header class="site-header">
+      <div class="header-content">
+        <a href="/" class="logo-link">Photo-Reader</a>
+        <nav class="main-nav">
+          <a href="/index.html" class="nav-link">Главная</a>
+          <a href="pages/tech.html" class="nav-link">О технологии OCR</a>
+          <a href="pages/about.html" class="nav-link">О нас</a>
+          <a href="pages/privacy-policy.html" class="nav-link">Политика</a>
+        </nav>
+      </div>
+    </header>
+
     <div id="app">
       <div class="welcome-box box-content">
         <h2>Photo-Reader: Ваш лаконичный OCR-инструмент</h2>
         <p>
-          Этот сервис позволяет вам распознавать текст на изображениях,
-          используя локальные файлы или встроенную камеру вашего устройства.
+          Этот сервис позволяет вам мгновенно распознавать текст на
+          изображениях, используя файлы, загруженные с вашего устройства. Мы
+          фокусируемся на скорости и минимализме.
         </p>
         <ol class="instruction-list">
           <li>
-            Выберите способ: Нажмите на иконку камеры (для фото) или загрузки
-            (для файла).
+            Выберите файл: Нажмите кнопку "Выбрать файл" и загрузите изображение
+            (JPG, PNG), содержащее текст.
           </li>
+          <li>Получите результат: Распознанный текст появится в окне ниже.</li>
           <li>
-            Сделайте снимок/Загрузите файл: Предоставьте изображение, содержащее
-            текст.
-          </li>
-          <li>
-            Получите результат: Распознанный текст будет автоматически
-            скопирован в буфер обмена.
+            Копирование: Текст легко скопировать в буфер обмена нажатием одной
+            кнопки.
           </li>
         </ol>
       </div>
 
-      <div class="icons-con">
-        <p class="instruction-text">Выберите способ загрузки файла:</p>
-        <div class="choice-buttons">
-          <button class="icon-button cam-i" title="Использовать камеру">
-            <img
-              src="src/images/camera.svg"
-              alt="Изображение камеры"
-              class="icons"
-            />
-          </button>
-          <button class="icon-button upload-i" title="Загрузить локальный файл">
-            <img
-              src="src/images/upload.png"
-              alt="Изображение выгрузки файлов"
-              class="icons"
-            />
-          </button>
-        </div>
-      </div>
-
-      <div class="upload-file box-content hidden">
-        <input type="file" id="file" class="custom-file-input" />
+      <div class="upload-file box-content">
+        <p class="instruction-text">Загрузите файл для распознавания:</p>
+        <input
+          type="file"
+          id="file"
+          class="custom-file-input"
+          accept="image/*"
+        />
         <label for="file" class="btn btn-white btn-animate">
           Выбрать файл
         </label>
-        <pre id="out"></pre>
+        <pre id="out">Ожидание загрузки файла...</pre>
         <button class="btn btn-secondary copy-btn" data-target="out">
-          Копировать текст
-        </button>
-      </div>
-
-      <div class="camera box-content hidden">
-        <video id="video" autoplay playsinline></video>
-        <button id="snap" class="btn btn-primary">Сделать фото</button>
-        <canvas id="canvas"></canvas>
-        <pre id="out_for_camera"></pre>
-        <button class="btn btn-secondary copy-btn" data-target="out_for_camera">
           Копировать текст
         </button>
       </div>
@@ -127,6 +113,10 @@
     <div id="notification-toast" class="toast">
       Текст скопирован в буфер обмена!
     </div>
+
+    <footer class="site-footer">
+      <p>© 2025 Photo-Reader by Grim Porg.</p>
+    </footer>
 
     <script type="module" src="/src/main.ts"></script>
   </body>

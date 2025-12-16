@@ -1,5 +1,6 @@
 @import url(./file-button.css);
 @import url(./toast.css);
+@import url(./header.css);
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
@@ -132,20 +133,7 @@ body {
     display: none !important;
 }
 
-#video {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#canvas {
-    display: none;
-}
-
-#out, #out_for_camera {
+#out {
     white-space: pre-wrap;
     text-align: left;
     width: 100%;
